@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modern Resume Builder</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>✨ Resume Builder</h1>
+    <p>Create your professional resume in minutes</p>
+  </header>
+
+  <main class="container">
+    <!-- Resume Form -->
+    <form id="resumeForm">
+      <h2>📝 Fill in Your Details</h2>
+      <input type="text" id="fullName" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="text" id="phone" placeholder="Phone Number" required />
+      <textarea id="education" placeholder="Education (e.g., B.Tech in CSE from SRM University)" rows="3"></textarea>
+      <textarea id="experience" placeholder="Experience (e.g., Web Developer Intern at XYZ)" rows="3"></textarea>
+      <textarea id="skills" placeholder="Skills (e.g., HTML, CSS, Python)" rows="2"></textarea>
+      <button type="submit">✨ Generate Resume</button>
+    </form>
+
+    <!-- Resume Output -->
+    <section class="resume-preview" id="resumeOutput">
+      <h2>📄 Resume Preview</h2>
+      <div id="outputContent">
+        <p>Fill out the form to preview your resume here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Created with ❤️ by You</p>
+  </footer>
+
+  <script>
+    document.getElementById('resumeForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const education = document.getElementById('education').value;
+      const experience = document.getElementById('experience').value;
+      const skills = document.getElementById('skills').value;
+
+      const output = `
+        <h3>${name}</h3>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <h4>🎓 Education</h4>
+        <p>${education.replace(/\n/g, "<br>")}</p>
+        <h4>💼 Experience</h4>
+        <p>${experience.replace(/\n/g, "<br>")}</p>
+        <h4>🛠️ Skills</h4>
+        <p>${skills}</p>
+      `;
+
+      document.getElementById('outputContent').innerHTML = output;
+    });
+  </script>
+</body>
+</html>
